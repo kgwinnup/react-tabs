@@ -1,0 +1,100 @@
+
+$tab-container: #cccccc;
+$tab-bg: #999;
+$tab-height: 34px;
+$tab-width: 160px;
+$tab-max-width: 180px;
+$tab-min-width: 120px;
+$tab-text: #fff;
+$tab-font: "Lucida Console", Monaco, monospace;
+$tab-text-color-highlight: #fff;
+$tab-radius: 4px;
+$tab-border-color: #666;
+$tab-border-color-active: #4f4f4f;
+$tab-border-color-hover: #5c5c5c;
+
+.tab-container{
+    position: relative;
+    left: 14px;
+
+    .tab{
+        border: none;
+        color: $tab-text;
+        display: inline-block;
+        height: $tab-height;
+        line-height: $tab-height;
+        margin: 0 20px 0 5px;
+        position: relative;
+        width: $tab-width;
+        max-width: $tab-max-width;
+        min-width: $tab-min-width;
+        font-family: $tab-font;
+        font-size: 12px;
+        cursor: pointer;
+
+        transition: color .1s ease-in;
+
+        &, &:before, &:after{
+            background-image: -webkit-linear-gradient(top, lighten($tab-border-color, 7%), $tab-border-color);
+            height: $tab-height;
+        }
+
+        &:after, &:before{
+            content: '';
+            position: absolute;
+            top: 0px;
+            width: 25px;
+            height: $tab-height;
+            border-top-left-radius: $tab-radius;
+            border-top-right-radius: $tab-radius;
+        }
+
+        &:before{
+            left: -14px;
+            box-shadow: inset 1px 1px 0 $tab-border-color, -4px 0px 4px rgba(0,0,0,.1);
+            -webkit-transform: skewX(-30deg);
+        }
+
+        &:after{
+            right: -14px;
+            box-shadow: inset -1px 1px 0 $tab-border-color, 4px 0px 4px rgba(0,0,0,.1);
+            -webkit-transform: skewX(30deg);
+        }
+
+        .title{
+            position: relative;
+            z-index: 1;
+            padding-right: 10px;
+
+            &:hover{
+                -webkit-transition: opacity .25s ease-in-out;
+                opacity: 0.5;
+            }
+        }
+
+
+        .close{
+            position: relative;
+            z-index: 1;
+            float: right;
+        }
+        .close a{
+            color: $tab-text;
+            text-decoration: none;
+        }
+        .close a:hover{
+            color: #ccc;
+        }
+    }
+
+    .tab.active{
+        z-index: 1;
+        color: $tab-text-color-highlight;
+        box-shadow: inset -1px 1px 0 $tab-border-color-active, 4px -4px 4px rgba(0,0,0,.1);
+
+        &, &:before, &:after{
+            background-image: -webkit-linear-gradient(top, lighten($tab-border-color-active, 7%), $tab-border-color-active);
+            height: $tab-height;
+        }
+    }
+}
