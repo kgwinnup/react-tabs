@@ -4,7 +4,7 @@ import React from 'react';
 exports.TabContainer = React.createClass({
 
     render: function(){
-        return(
+        return (
             <div className='tab-container'>
                 {this.props.children}
             </div>
@@ -24,7 +24,7 @@ exports.Tab = React.createClass({
 
     render: function(){
         var classnames = (this.props.active) ? 'tab active' : 'tab';
-        return(
+        return (
             <div className={classnames}>
 
                 <div className='title '>

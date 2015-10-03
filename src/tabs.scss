@@ -1,6 +1,6 @@
 
-$tab-height: 28px;
-$tab-width: 140px;
+$tab-height: 24px;
+$tab-width: 120px;
 $tab-max-width: 160px;
 $tab-min-width: 100px;
 $tab-text: #000;
@@ -9,9 +9,9 @@ $tab-font: sans-serif;
 $tab-radius: 4px;
 $tab-border-color: #d0d1d0;
 $tab-border-color-active: #edeeeb;
-$tab-border-color-hover: #5c5c5c;
 $tab-new-width: calc(#{$tab-height} * 1.1);
 $tab-new-height: calc(#{$tab-height} * 0.6);
+$tab-new-bottom: calc(#{$tab-height} * 0.25);
 
 .tab-container{
     position: relative;
@@ -36,16 +36,19 @@ $tab-new-height: calc(#{$tab-height} * 0.6);
         transition: color .1s ease-in;
         box-shadow: inset 1px 1px 0 $tab-border-color, -4px 0px 4px rgba(0,0,0,.07);
 
-        &, &:before, &:after{
+        &,
+        &:before,
+        &:after{
             background-image: -webkit-linear-gradient(top, lighten($tab-border-color, 7%), $tab-border-color);
             height: $tab-height;
         }
 
-        &:after, &:before{
+        &:after,
+        &:before{
             content: '';
             position: absolute;
             top: 0px;
-            width: 25px;
+            width: 30px;
             height: $tab-height;
             border-top-left-radius: $tab-radius;
             border-top-right-radius: $tab-radius;
@@ -63,15 +66,16 @@ $tab-new-height: calc(#{$tab-height} * 0.6);
             -webkit-transform: skewX(30deg);
         }
 
+        &:hover:before,
+        &:hover:after,
+        &:hover{
+            background-image: -webkit-linear-gradient(top, lighten($tab-border-color-active, 4%), $tab-border-color-active);
+        }
+
         .title{
             position: relative;
             z-index: 1;
             padding-right: 10px;
-
-            &:hover{
-                -webkit-transition: opacity .25s ease-in-out;
-                opacity: 0.5;
-            }
         }
 
 
@@ -91,27 +95,30 @@ $tab-new-height: calc(#{$tab-height} * 0.6);
         .close a:hover{
             color: #ccc;
         }
+
     }
 
     .tab.active{
         z-index: 1;
         color: $tab-text-active;
-        box-shadow: inset -1px 1px 0 $tab-border-color-active, 4px -4px 4px rgba(0,0,0,.05);
+        box-shadow: inset -1px 1px 0 $tab-border-color-active, 4px -4px 4px rgba(0,0,0,.03);
 
-        &, &:before, &:after{
+        &,
+        &:before,
+        &:after{
             background-image: -webkit-linear-gradient(top, lighten($tab-border-color-active, 7%), $tab-border-color-active);
             height: $tab-height;
         }
 
         &:before{
             left: -14px;
-            box-shadow: inset 1px 1px 0 $tab-border-color-active, -4px 0px 4px rgba(0,0,0,.05);
+            box-shadow: inset 1px 1px 0 $tab-border-color-active, -4px 0px 4px rgba(0,0,0,.03);
             -webkit-transform: skewX(-30deg);
         }
 
         &:after{
             right: -14px;
-            box-shadow: inset -1px 1px 0 $tab-border-color-active, 4px 0px 4px rgba(0,0,0,.05);
+            box-shadow: inset -1px 1px 0 $tab-border-color-active, 4px 0px 4px rgba(0,0,0,.03);
             -webkit-transform: skewX(30deg);
         }
 
@@ -130,13 +137,13 @@ $tab-new-height: calc(#{$tab-height} * 0.6);
         display: inline-block;
         border-radius: $tab-radius;
         -webkit-transform: skewX(30deg);
-        box-shadow: inset -1px 1px 0 $tab-border-color, 4px 0px 4px rgba(0,0,0,.07);
+        box-shadow: inset -1px 1px 0 $tab-border-color, 4px 0px 4px rgba(0,0,0,.04);
         transition: color .1s ease-in;
         cursor: default;
 
         &:hover {
-            -webkit-transition: opacity .25s ease-in-out;
             opacity: 0.5;
+            background-image: -webkit-linear-gradient(top, lighten($tab-border-color-active, 4%), $tab-border-color-active);
         }
     }
 }
