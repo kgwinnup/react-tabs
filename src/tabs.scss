@@ -1,23 +1,25 @@
 
-$tab-container: #cccccc;
-$tab-bg: #999;
-$tab-height: 34px;
-$tab-width: 160px;
-$tab-max-width: 180px;
-$tab-min-width: 120px;
-$tab-text: #fff;
-$tab-font: "Lucida Console", Monaco, monospace;
-$tab-text-color-highlight: #fff;
+$tab-height: 28px;
+$tab-width: 140px;
+$tab-max-width: 160px;
+$tab-min-width: 100px;
+$tab-text: #000;
+$tab-text-active: #000;
+$tab-font: sans-serif;
 $tab-radius: 4px;
-$tab-border-color: #666;
-$tab-border-color-active: #4f4f4f;
+$tab-border-color: #d0d1d0;
+$tab-border-color-active: #edeeeb;
 $tab-border-color-hover: #5c5c5c;
+$tab-new-width: calc(#{$tab-height} * 1.1);
+$tab-new-height: calc(#{$tab-height} * 0.6);
 
 .tab-container{
     position: relative;
     left: 14px;
+    white-space: nowrap;
 
     .tab{
+        position: relative;
         border: none;
         color: $tab-text;
         display: inline-block;
@@ -29,10 +31,10 @@ $tab-border-color-hover: #5c5c5c;
         max-width: $tab-max-width;
         min-width: $tab-min-width;
         font-family: $tab-font;
-        font-size: 12px;
-        cursor: pointer;
-
+        font-size: 11px;
+        cursor: default;
         transition: color .1s ease-in;
+        box-shadow: inset 1px 1px 0 $tab-border-color, -4px 0px 4px rgba(0,0,0,.07);
 
         &, &:before, &:after{
             background-image: -webkit-linear-gradient(top, lighten($tab-border-color, 7%), $tab-border-color);
@@ -51,13 +53,13 @@ $tab-border-color-hover: #5c5c5c;
 
         &:before{
             left: -14px;
-            box-shadow: inset 1px 1px 0 $tab-border-color, -4px 0px 4px rgba(0,0,0,.1);
+            box-shadow: inset 1px 1px 0 $tab-border-color, -4px 0px 4px rgba(0,0,0,.07);
             -webkit-transform: skewX(-30deg);
         }
 
         &:after{
             right: -14px;
-            box-shadow: inset -1px 1px 0 $tab-border-color, 4px 0px 4px rgba(0,0,0,.1);
+            box-shadow: inset -1px 1px 0 $tab-border-color, 4px 0px 4px rgba(0,0,0,.07);
             -webkit-transform: skewX(30deg);
         }
 
@@ -74,14 +76,18 @@ $tab-border-color-hover: #5c5c5c;
 
 
         .close{
-            position: relative;
-            z-index: 1;
-            float: right;
+            display: inline-block;
+            color: black;
+            position: absolute;
+            right: 0;
+            z-index: 3;
         }
+
         .close a{
             color: $tab-text;
             text-decoration: none;
         }
+
         .close a:hover{
             color: #ccc;
         }
@@ -89,12 +95,48 @@ $tab-border-color-hover: #5c5c5c;
 
     .tab.active{
         z-index: 1;
-        color: $tab-text-color-highlight;
-        box-shadow: inset -1px 1px 0 $tab-border-color-active, 4px -4px 4px rgba(0,0,0,.1);
+        color: $tab-text-active;
+        box-shadow: inset -1px 1px 0 $tab-border-color-active, 4px -4px 4px rgba(0,0,0,.05);
 
         &, &:before, &:after{
             background-image: -webkit-linear-gradient(top, lighten($tab-border-color-active, 7%), $tab-border-color-active);
             height: $tab-height;
+        }
+
+        &:before{
+            left: -14px;
+            box-shadow: inset 1px 1px 0 $tab-border-color-active, -4px 0px 4px rgba(0,0,0,.05);
+            -webkit-transform: skewX(-30deg);
+        }
+
+        &:after{
+            right: -14px;
+            box-shadow: inset -1px 1px 0 $tab-border-color-active, 4px 0px 4px rgba(0,0,0,.05);
+            -webkit-transform: skewX(30deg);
+        }
+
+
+    }
+
+    .tab-new {
+        border: 0px;
+        margin: 0px;
+        border: 1px solid darken($tab-border-color, 4%);
+        position: relative;
+        bottom: -6px;
+        height: $tab-new-height;
+        width: $tab-new-width;
+        background: $tab-border-color;
+        display: inline-block;
+        border-radius: $tab-radius;
+        -webkit-transform: skewX(30deg);
+        box-shadow: inset -1px 1px 0 $tab-border-color, 4px 0px 4px rgba(0,0,0,.07);
+        transition: color .1s ease-in;
+        cursor: default;
+
+        &:hover {
+            -webkit-transition: opacity .25s ease-in-out;
+            opacity: 0.5;
         }
     }
 }

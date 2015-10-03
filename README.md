@@ -1,3 +1,3 @@
-Tabs from one of the themes in Atom editor into a Reactjs component
+CSS clone of Google Chrome's tabs
 
 ![Tabs](https://github.com/kgwinnup/react-tabs/blob/master/tabs.png)

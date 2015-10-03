@@ -1,9 +1,7 @@
 
-var React = require('react');
-var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
+import React from 'react';
 
 exports.TabContainer = React.createClass({
-    mixins: [PureRenderMixin],
 
     render: function(){
         return(
@@ -14,8 +12,15 @@ exports.TabContainer = React.createClass({
     }
 });
 
+exports.TabNew = React.createClass({
+    render: function(){
+        return(
+            <div className='tab-new'></div>
+        );
+    }
+});
+
 exports.Tab = React.createClass({
-    mixins: [PureRenderMixin],
 
     render: function(){
         var classnames = (this.props.active) ? 'tab active' : 'tab';
@@ -23,8 +28,12 @@ exports.Tab = React.createClass({
             <div className={classnames}>
 
                 <div className='title '>
+
                     {this.props.title}
-                    <div className='close'><a href='#' onClick={this.props.onClose}>&times;</a></div>
+
+                    <div className='close'>
+                        <a href='#' onClick={this.props.onClose}>&times;</a>
+                    </div>
                 </div>
 
             </div>

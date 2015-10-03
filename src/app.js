@@ -1,7 +1,6 @@
 
-var React = require('react');
-var TabContainer = require('./tabs.jsx').TabContainer;
-var Tab = require('./tabs.jsx').Tab;
+import React from 'react';
+import { TabContainer, Tab, TabNew } from './tabs';
 
 require('./tabs.scss');
 require('./index.html');
@@ -15,8 +14,9 @@ var Demo = React.createClass({
                 <Tab title='tab 2' active={false} />
                 <Tab title='tab 1' active={true} />
                 <Tab title='tab 2' active={false} />
+                <TabNew />
             </TabContainer>
-        )
+        );
     }
 });
 
